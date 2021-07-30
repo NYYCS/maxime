@@ -34,9 +34,9 @@ const Reservation = () => {
   }
 
   const views = [
-    <DateTime onChange={handleDateTimeChange}/>, 
-    <Guests onChange={handleGuestsChange}/>,
-    <Confirmation {...formData} />
+    <DateTime key={1} onChange={handleDateTimeChange}/>, 
+    <Guests  key={1} onChange={handleGuestsChange}/>,
+    <Confirmation  key={1} {...formData} />
   ]
 
   const viewValidate = [
