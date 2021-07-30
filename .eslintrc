@@ -2,6 +2,6 @@
   "extends": ["next"],
   "rules": {
     "jsx-quotes": ["error", "prefer-double"],
-    "quotes": ["error", "backtick", "double"]
+    "quotes": ["error", "double", {"allowTemplateLiterals": true}]
   }
 }
