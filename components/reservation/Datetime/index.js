@@ -38,7 +38,7 @@ const DateTime = ({onChange}) => {
 
   useEffect(() => {
     onChange([date, time]);
-  }, [date, time]); 
+  }, [onChange, date, time]); 
 
 
   return (
