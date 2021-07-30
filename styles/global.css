@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Neuzeit Grotesk';
+  font-weight: 400;
+  src: url('/fonts/Neuzeit_Grotesk.otf');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-weight: 400;
+  src: url('/fonts/Roboto-Regular.ttf');
+  font-display: swap;
+}
+
+body::-webkit-scrollbar {
+  width: 0;
+}
+
+::-moz-selection { /* Code for Firefox */
+  color: black;
+  background: white;
+}
+
+::selection {
+  color: black;
+  background: white;
+}

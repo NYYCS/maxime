@@ -1,82 +1,64 @@
-import Head from 'next/head'
+import ScrollAnimation from "react-animate-on-scroll"
 
-export default function Home() {
+import Navbar from "../components/navbar"
+
+import Image from "next/image"
+
+export default function Index() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
-
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="p-3 font-mono text-lg bg-gray-100 rounded-md">
-            pages/index.js
-          </code>
-        </p>
-
-        <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+    <>
+      <Navbar />
+      <div className="flex w-screen h-screen text-white bg-black">
+        <div className="absolute z-10 flex flex-col items-start justify-center w-full h-screen p-8">
+          <div className="flex text-6xl md:text-8xl font-grotesk animate-fade-down">Exclusive</div>
+          <div className="flex flex-wrap text-6xl md:text-8xl font-grotesk animate-fade-up">Dining Experience</div>
         </div>
-      </main>
-
-      <footer className="flex items-center justify-center w-full h-24 border-t">
-        <a
-          className="flex items-center justify-center"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="h-4 ml-2" />
-        </a>
-      </footer>
-    </div>
-  )
+      </div>
+      <div className="flex flex-col justify-start w-full h-screen p-10 overflow-hidden text-white bg-black md:flex-row">
+        <div className="flex flex-col justify-center flex-1">
+          <ScrollAnimation animateIn="animate-fade-down">
+            <div className="flex w-full h-full bg-gray-50"/>
+          </ScrollAnimation>
+        </div>
+        <div className="flex flex-col justify-center flex-1 md:p-10">
+          <ScrollAnimation animateIn="animate-fade-down">
+            <div className="flex justify-start py-4 text-4xl font-bold md:text-8xl font-grotesk">
+              About.
+            </div>
+            <div className="flex flex-wrap py-2 text-gray-200 md:text-2xl font-grotesk md:py-4">
+              We are a small restaurant operating under the premise of
+              providing our private customers with exquisite culinary experience.
+            </div>
+            <div className="flex flex-wrap py-2 text-gray-200 md:text-2xl font-grotesk md:py-4">
+              Services are only provided through a invitational basis.
+            </div>
+            <div className="flex flex-row py-4 text-gray-500 transition-all md:text-2xl font-grotesk group hover:text-gray-200">
+              <div className="flex px-4 py-2 font-bold text-white transition-all border-2 border-white rounded hover:text-black hover:bg-white">place reservation</div>
+            </div>
+          </ScrollAnimation>
+        </div>
+      </div>
+      <div className="flex flex-col justify-start w-full h-screen p-10 overflow-hidden text-white bg-black md:flex-row-reverse">
+        <div className="flex flex-col justify-center flex-1">
+          <ScrollAnimation animateIn="animate-fade-left">
+            <div className="flex w-full h-full bg-gray-50"/>
+          </ScrollAnimation>
+        </div>
+        <div className="flex flex-col justify-center flex-1 md:p-10">
+          <ScrollAnimation animateIn="animate-fade-down">
+            <div className="flex justify-start py-4 text-4xl font-bold md:text-8xl font-grotesk">
+              Menu.
+            </div>
+            <div className="flex flex-wrap py-2 text-gray-200 md:text-2xl font-grotesk md:py-4">
+              Explore our catalogue of delicate cuisine 
+              masterfully prepared by our chefs. 
+            </div>
+            <div className="flex flex-row py-4 text-gray-500 transition-all md:text-2xl font-grotesk group hover:text-gray-200">
+              <div className="flex px-4 py-2 font-bold text-white transition-all border-2 border-white rounded hover:text-black hover:bg-white">view menu</div>
+            </div>
+          </ScrollAnimation>
+        </div>
+      </div>
+    </>
+  );
 }
