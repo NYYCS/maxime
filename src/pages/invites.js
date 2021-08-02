@@ -1,5 +1,5 @@
-import Navbar from "../components/navbar"
-import InvitePage from "../components/invite/InvitePage"
+import Navbar from "../modules/layout/Navbar"
+import InvitePage from "./invites"
 
 const Invite = () => {
   return (
