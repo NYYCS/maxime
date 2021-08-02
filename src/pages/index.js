@@ -1,6 +1,6 @@
 import ScrollAnimation from "react-animate-on-scroll"
 
-import Navbar from "../components/navbar"
+import Navbar from "../modules/layout/Navbar"
 
 import Image from "next/image"
 

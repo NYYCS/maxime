@@ -1,11 +1,11 @@
 
 import { Component, useState } from "react"
-import { useUpdateEffect } from "../src/hooks"
+import { useUpdateEffect } from "../modules/hooks"
 
-import Navbar from "../components/navbar"
-import DateTime from "../components/reservation/Datetime"
-import Guests from "../components/reservation/Guests"
-import Confirmation from "../components/reservation/Confirmation"
+import Navbar from "../modules/layout/navbar"
+import DateTime from "../modules/reservation/Datetime"
+import Guests from "../modules/reservation/Guests"
+import Confirmation from "../modules/reservation/Confirmation"
 
 const Reservation = () => {
   const [index, setIndex] = useState(0);

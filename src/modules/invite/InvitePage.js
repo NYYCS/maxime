@@ -1,5 +1,5 @@
 import { useState } from "react"
-import Navbar from "../navbar"
+import Navbar from "../layout/navbar"
 
 const Invite = () => {
   return (
