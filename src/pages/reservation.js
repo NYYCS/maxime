@@ -2,7 +2,7 @@
 import { Component, useState } from "react"
 import { useUpdateEffect } from "../modules/hooks"
 
-import Navbar from "../modules/layout/navbar"
+import Navbar from "../modules/layout/Navbar"
 import DateTime from "../modules/reservation/Datetime"
 import Guests from "../modules/reservation/Guests"
 import Confirmation from "../modules/reservation/Confirmation"
