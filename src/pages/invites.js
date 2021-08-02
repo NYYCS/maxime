@@ -75,4 +75,4 @@ const InvitePanel = () => {
   )
 }
 
-export default InvitePage;
+export default InvitePanel;
