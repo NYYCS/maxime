@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "next": "latest",
+    "next-auth": "^3.27.3",
     "next-fonts": "^1.5.1",
     "next-images": "^1.8.1",
     "next-transpile-modules": "^8.0.0",
