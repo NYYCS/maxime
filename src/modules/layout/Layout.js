@@ -4,7 +4,7 @@ function Layout({ children }) {
   return (
     <>
       <Navbar/>
-      <div className="flex flex-col items-center justify-center min-h-screen px-10 text-white bg-black">
+      <div className="flex flex-col items-center justify-center min-h-screen px-4 pt-32 text-white bg-black">
         {children}
       </div>
     </>

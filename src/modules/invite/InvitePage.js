@@ -62,7 +62,7 @@ function InviteList({ items = [1, 2, 3, 4, 5, 6] }) {
 function InvitePage({ user }) {
   return (
     <Layout>
-      <div className="flex flex-col gap-2 mt-32">
+      <div className="flex flex-col gap-2">
         <div className="w-full text-4xl font-bold">Invites.</div>
         <div className="text-sm text-gray-400">
           <p>Here you can create and manage your invites.</p>
