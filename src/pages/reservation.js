@@ -1,6 +1,6 @@
 
 import { Component, useState } from "react"
-import { useUpdateEffect } from "../modules/hooks"
+import { useUpdateEffect } from "../modules/hooks/useUpdateEffect"
 
 import Navbar from "../modules/layout/Navbar"
 import DateTime from "../modules/reservation/Datetime"

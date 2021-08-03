@@ -1,5 +1,5 @@
 import Navbar from "../modules/layout/Navbar"
-import InvitePage from "./invites"
+import InvitePage from "../modules/invite/InvitePage"
 
 const Invite = () => {
   return (
@@ -75,4 +75,4 @@ const InvitePanel = () => {
   )
 }
 
-export default InvitePanel;
+export default InvitePage;

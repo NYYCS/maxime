@@ -6,8 +6,8 @@ const Dashboard = () => {
   const ReservationList = ({ label, reservations }) => {
     return (
       <span className="flex flex-col flex-1 mr-8 last:mr-0">
-        <div className="py-4 text-4xl font-bold font-grotesk">{label}</div>
-        <div className="flex flex-col flex-1 w-full p-4 overflow-y-scroll border rounded ">
+        <div className="py-4 text-2xl font-bold font-grotesk">{label}</div>
+        <div className="flex flex-col flex-1 w-full p-4 overflow-y-auto border rounded ">
           {reservations}
         </div>
       </span>

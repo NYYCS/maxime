@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react" 
-import { useUpdateEffect } from "../../hooks";
+import { useUpdateEffect } from "../../hooks/useUpdateEffect";
 
 const Button = ({label, active, onClick}) => {
   return (

@@ -20,6 +20,10 @@ body::-webkit-scrollbar {
   width: 0;
 }
 
+body {
+  font-family: 'Neuzeit Grotesk';
+}
+
 ::-moz-selection { /* Code for Firefox */
   color: black;
   background: white;
