@@ -1,7 +1,7 @@
 import { useState } from "react"
 
-import DatePicker from "./Datepicker"
-import TimePicker from "./Timepicker"
+import DatePicker from "./DatePicker"
+import TimePicker from "./TimePicker"
 import InputField from "./InputField"
 
 function DateTimeView({ formData, setFormData }) {

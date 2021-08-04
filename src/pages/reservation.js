@@ -2,11 +2,6 @@
 import { Component, useState } from "react"
 import { useUpdateEffect } from "../modules/hooks/useUpdateEffect"
 
-import Navbar from "../modules/layout/Navbar"
-import DateTime from "../modules/reservation/Datetime"
-import Guests from "../modules/reservation/Guests"
-import Confirmation from "../modules/reservation/Confirmation"
-
 import ReservationPage from "../modules/reservation/ReservationPage"
 
 //const Reservation = () => {
