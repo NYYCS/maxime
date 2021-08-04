@@ -1,10 +1,10 @@
 import Navbar from "./Navbar"
 
-function Layout({ children }) {
+function Layout({ shouldPad, children }) {
   return (
     <>
       <Navbar/>
-      <div className="flex flex-col items-center justify-center min-h-screen px-4 pt-32 text-white bg-black">
+      <div className={`${shouldPad ? "py-4 md:py-10": ""} px-4 md:px-10 flex flex-col items-center justify-center min-h-screen text-white bg-black md:items-start`}>
         {children}
       </div>
     </>
