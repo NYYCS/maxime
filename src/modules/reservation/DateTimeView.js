@@ -1,16 +1,20 @@
-import { useState } from "react"
+import { useState, useEffect, useReducer } from "react"
+import useUpdateEffect from "../hooks/useUpdateEffect"
 
 import DatePicker from "./DatePicker"
 import TimePicker from "./TimePicker"
-import InputField from "./InputField"
+import InputField from "../ui/InputField"
 
-function DateTimeView({ formData, setFormData }) {
+function DateTimeView({ formDataRef, message }) {
   const [pickerName, setPickerName] = useState("");
+  const [date, setDate] = useState(formDataRef.current.date);
+  const [time, setTime] = useState(formDataRef.current.time);
+
   const pickers = {
-    date: <DatePicker key={2} onChange={date => setFormData({...formData, date: date})}/>,
-    time: <TimePicker key={2} onChange={time => setFormData({...formData, time: time})}/>,
+    date: <DatePicker key={0} value={date} onChange={setDate}/>,
+    time: <TimePicker key={1} value={time} onChange={setTime}/>,
   }
-  
+
   function createPickers(pickerName) {
     return Object.entries(pickers).map(([name, picker], index) => {
       return (
@@ -27,16 +31,35 @@ function DateTimeView({ formData, setFormData }) {
     }
   }
 
+  useUpdateEffect(() => {
+    formDataRef.current = {...formDataRef.current, date: date, time: time}
+  }, [date, time]);
+
+  function validateFields() {
+    if (date == "") setMessages({...messages, date: "This field is required."})
+    if (time == "") setMessages({...messages, time: "This field is required."})
+  }
+
+  function ErrorMessage({error}) {
+    return (
+      <div className={`${error ? "flex-1 opacity-100": "flex-0 opacity-0"} flex items-center justify-start w-full p-2 transition-all duration-200`}>
+        <span className="text-sm text-gray-200">{error}</span>
+      </div>
+    )
+  }
+
   return (
     <div className="flex flex-col justify-center">
       <div className="flex text-5xl font-bold text-center md:text-7xl">When is the Reservation?</div>
       {createPickers(pickerName)}
-      <div className="flex flex-col gap-4 py-4 duration-500 md:flex-row">
-        <span className="flex flex-1">
-          <InputField onClick={setPicker("date")} placeholder="date" readOnly/>
+      <div className="flex flex-col gap-4 py-4 md:flex-row">
+        <span className="flex flex-col flex-1">
+          <InputField value={date ? date.toLocaleDateString("en-gb", {day: "numeric", month: "long", year: "numeric"}): ""} onClick={setPicker("date")} placeholder="date" readOnly/>
+          <ErrorMessage error={message.date}/>
         </span>
-        <span className="flex flex-1">
-          <InputField onClick={setPicker("time")} placeholder="time" readOnly/>
+        <span className="flex flex-col flex-1">
+          <InputField value={time} initialClick={() => setTime(time || "11:00AM")} onClick={setPicker("time")} placeholder="time" readOnly/>
+          <ErrorMessage error={message.time}/>
         </span>
       </div>
     </div>

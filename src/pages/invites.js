@@ -1,4 +1,4 @@
 import InvitePage from "../modules/invite/InvitePage"
 
 
-export default InvitePage;
+export default InvitePage; 

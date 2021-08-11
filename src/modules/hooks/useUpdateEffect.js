@@ -1,6 +1,6 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react"
 
-const useUpdateEffect = (effect, dependencies = []) => {
+function useUpdateEffect (effect, dependencies = [])  {
   const initial = useRef(true);
   useEffect(() => {
     if (initial.current) {
@@ -11,6 +11,4 @@ const useUpdateEffect = (effect, dependencies = []) => {
   }, dependencies);
 }
 
-export {
-  useUpdateEffect,
-}
+export default useUpdateEffect;

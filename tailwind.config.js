@@ -40,8 +40,8 @@ module.exports = {
         },
       },
       animation: {
-        "fade-in": "fade-in cubic-bezier(0.4, 0, 0.2, 1) 1",
-        "fade-out": "fade-out cubic-bezier(0.4, 0, 0.2, 1) 1",
+        "fade-in": "fade-in 1s cubic-bezier(0.4, 0, 0.2, 1) 1",
+        "fade-out": "fade-out 1s cubic-bezier(0.4, 0, 0.2, 1) 1",
         "fade-up": "fade-up 1s cubic-bezier(0.4, 0, 0.2, 1) 1",
         "fade-down": "fade-down 1s cubic-bezier(0.4, 0, 0.2, 1) 1",
         "fade-left": "fade-left 1s cubic-bezier(0.4, 0, 0.2, 1) 1",

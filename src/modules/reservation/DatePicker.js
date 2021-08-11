@@ -1,18 +1,15 @@
 import { useState } from "react" 
-import { useUpdateEffect } from "../hooks/useUpdateEffect"
+import  useUpdateEffect from "../hooks/useUpdateEffect"
+import compareDate from "../../lib/compareDate"
 
 
-function DatePicker({initialViewDate = new Date(), value, onChange = () => {}}) {
+function DatePicker({ initialViewDate, value, onChange }) {
   const [activeDate, setActiveDate] = useState(value);
-  const [viewDate, setViewDate] = useState(initialViewDate);
+  const [viewDate, setViewDate] = useState(initialViewDate || new Date());
 
   function DateCard({date, active}) {
     const day = date.toLocaleDateString("en-gb", { weekday: "short"});
     const dateNum = date.getDate();
-
-    useUpdateEffect(() => {
-      onChange(activeDate);
-    }, [activeDate]);
 
     return (
       <button className={`${active ? "text-white" : "text-gray-500"} flex flex-col items-center`} onClick={() => setActiveDate(date)}>
@@ -22,11 +19,16 @@ function DatePicker({initialViewDate = new Date(), value, onChange = () => {}}) 
     )
   }
 
+  useUpdateEffect(() => {
+    onChange(activeDate);
+  }, [activeDate]);
+
+
   function createWeek(startDate) {
     return [...Array(7).keys()].map((index) => {
       const date = new Date(startDate.valueOf());
       date.setDate(date.getDate() - startDate.getDay() + index + 1);
-      return <DateCard key={index} date={date} active={activeDate ? activeDate.getTime() == date.getTime() : false}
+      return <DateCard key={index} date={date} active={compareDate(activeDate, date)}
       />
     })
   }

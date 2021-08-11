@@ -1,13 +1,14 @@
-import { useState } from "react"
-import { useUpdateEffect } from "../hooks/useUpdateEffect";
+import { useState, useEffect } from "react"
+import  useUpdateEffect from "../hooks/useUpdateEffect";
 
 
-function TimePicker({ value = "11:00AM", onChange }) {
+function TimePicker({ value, onChange }) {
   const times = ["11:00AM", "12:00PM", "06:00PM"];
 
+  const initialIndex = times.indexOf(value)
 
-  const [time, setTime] = useState(value);
-  const [index, setIndex] = useState(times.indexOf(value));
+  const [index, setIndex] = useState(initialIndex != -1 ? initialIndex : 0);
+  const [time, setTime] = useState(times[index]);
   
   const [min, setMin] = useState(index == 0);
   const [max, setMax] = useState(index == times.length - 1);
@@ -16,8 +17,11 @@ function TimePicker({ value = "11:00AM", onChange }) {
     if (min != (index == 0)) setMin(!min);
     if (max != (index == times.length - 1)) setMax(!max);
     setTime(times[index]);
-    onChange(time);
   }, [index]);
+
+  useUpdateEffect(() => {
+    onChange(time);
+  }, [time])
 
   function nextTime() {
     if (!max) setIndex(index + 1);
