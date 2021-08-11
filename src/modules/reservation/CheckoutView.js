@@ -1,4 +1,4 @@
-import { Check } from "typeorm";
+
 import getStripe from "../../lib/getStripe";
 
 
