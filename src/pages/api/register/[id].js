@@ -26,6 +26,7 @@ export default async function(req, res) {
   } else {
     if (user) {
       await createUser(user, invite);
+      await conn.query("UPDATE invites SET claimed_by = $1, status = 'claimed' WHERE hash = $2", invite.created_by, invite.hash);
       res.status(200).json({ ok: 'ok' });
     }
   }

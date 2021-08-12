@@ -5,7 +5,7 @@ import Cors from "micro-cors"
 import getRawBody from "raw-body"
 import getDatabase from "../../lib/getDatabase"
 
-const WEBHOOK_SECRET = "whsec_CUKs3M3KAKhyZVu8hYX5m4xP2Tj2aA12"
+const WEBHOOK_SECRET = "whsec_bOKE0JkMMv3H9e2qBNbBy5CxzhoflmlY"
 
 const cors = Cors({
   allowMethods: ["POST", "HEAD"],

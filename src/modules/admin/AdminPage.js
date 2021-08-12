@@ -39,7 +39,7 @@ const AdminPage = () => {
   
   if (loading) return null;
 
-  if(session?.user.uuid != "c8289629-8a44-4654-85f6-e12c502fc272" && !loading) {
+  if(session?.user.role != "admin" && !loading) {
     return <Error statusCode={404}/>
   }
 
