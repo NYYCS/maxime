@@ -5,7 +5,7 @@ import Cors from "micro-cors"
 import getRawBody from "raw-body"
 import getDatabase from "../../lib/getDatabase"
 
-const WEBHOOK_SECRET = "whsec_bOKE0JkMMv3H9e2qBNbBy5CxzhoflmlY"
+const WEBHOOK_SECRET = "whsec_CUKs3M3KAKhyZVu8hYX5m4xP2Tj2aA12"
 
 const cors = Cors({
   allowMethods: ["POST", "HEAD"],
@@ -29,4 +29,16 @@ export default cors(async function(req, res) {
   const sig = req.headers["stripe-signature"];
   const buf = await getRawBody(req);
 
+  try {
+    const event = stripe.webhooks.constructEvent(buf, sig, WEBHOOK_SECRET);
+    if (event.type == "checkout.session.completed") {
+      const checkout = await stripe.checkout.sessions.retrieve(event.data.object.id);
+      const reservation = checkout.metadata;
+      await createReservation(reservation, userUuid);
+      res.statusCode(200);
+      res.end();
+    }
+  } catch(error) {
+
+  }
 });
