@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react"
 import Customer from "./Customer"
 
-const Customers = () => {
+const Customers = ({ items }) => {
   const [query, setQuery] = useState("");
-  const [items, setItems] = useState([]);
 
-  useEffect(() => {
-    setItems([<Customer key="1"/>])
-  }, [query]);
 
+  function listCustomer(customers) {
+    return customers.map((item, index) => <Customer key={index} user={item}/>)
+  }
 
   return (
     <span className="flex flex-col flex-1 p-10 overflow-y-hidden">
@@ -20,7 +19,7 @@ const Customers = () => {
         <input type="search" className="flex flex-1 px-2 hover:outline-none focus:outline-none" placeholder="Search" onChange={e => setQuery(e.target.value)}/>
       </div>
       <div className="flex flex-col flex-1 p-4 overflow-y-scroll border rounded">
-        {items}
+        {listCustomer(items)}
       </div>
     </span>
   )

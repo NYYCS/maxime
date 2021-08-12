@@ -1,17 +1,18 @@
 import { useState, useEffect, useReducer } from "react"
 import useUpdateEffect from "../hooks/useUpdateEffect"
+import compareDate from "../../lib/compareDate"
 
 import DatePicker from "./DatePicker"
 import TimePicker from "./TimePicker"
 import InputField from "../ui/InputField"
 
-function DateTimeView({ formDataRef, message }) {
+function DateTimeView({ formDataRef, message, dates }) {
   const [pickerName, setPickerName] = useState("");
   const [date, setDate] = useState(formDataRef.current.date);
   const [time, setTime] = useState(formDataRef.current.time);
 
   const pickers = {
-    date: <DatePicker key={0} value={date} onChange={setDate}/>,
+    date: <DatePicker disabledDates={disabledDates} key={0} value={date} onChange={setDate}/>,
     time: <TimePicker key={1} value={time} onChange={setTime}/>,
   }
 
@@ -35,9 +36,8 @@ function DateTimeView({ formDataRef, message }) {
     formDataRef.current = {...formDataRef.current, date: date, time: time}
   }, [date, time]);
 
-  function validateFields() {
-    if (date == "") setMessages({...messages, date: "This field is required."})
-    if (time == "") setMessages({...messages, time: "This field is required."})
+  function disabledDates(date) {
+    return dates.some(d => compareDate(date, d)) || date.getTime() < new Date().getTime();
   }
 
   function ErrorMessage({error}) {

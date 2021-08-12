@@ -12,7 +12,7 @@ function InputField({ value, onChange, message, ...inputProps }) {
   )
 }
 
-function LoginForm({ message }) {
+function LoginForm({ message = "Sign In."}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [canLogin, setCanLogin] = useState(false);
@@ -26,9 +26,7 @@ function LoginForm({ message }) {
   }, [email, password]);
 
   function login() {
-    console.log("Hello");
     if (canLogin) {
-      console.log("Hello");
       signIn("credentials", {
         redirect: false,
         email: email,
@@ -41,7 +39,7 @@ function LoginForm({ message }) {
   }
   
   return (
-    <form className="flex flex-col items-center justify-center w-full gap-4 max-w-prose">
+    <form onSubmit={login} className="flex flex-col items-center justify-center w-full gap-4 max-w-prose">
       <div className="text-5xl font-bold animate-fade-down md:text-7xl">{message}</div>
       <div className="flex flex-col w-full gap-4 animate-fade-right">
         <InputField value={email} onChange={setEmail} type="email" placeholder="email"/>

@@ -1,6 +1,6 @@
 function MenuCard() {
   return (
-    <div className="flex flex-col w-full h-screen md:flex-row-reverse">
+    <div id="menu" className="flex flex-col w-full h-screen md:flex-row-reverse">
       <div className="flex flex-col items-center justify-center flex-1 p-4 md:p-10">
         <div className="flex flex-1 w-full bg-gray-100"/>
       </div>

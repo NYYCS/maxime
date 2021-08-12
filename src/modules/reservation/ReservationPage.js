@@ -24,8 +24,10 @@ function ReservationPage() {
 
   const [message, setMessage] = useState({});
 
+  const [dates, setDates] = useState([]);
+
   const views = [
-    <DateTimeView key={1} message={message} setMessage={setMessage} formDataRef={formDataRef}/>,
+    <DateTimeView key={1} dates={dates.map(date => new Date(date))} message={message} setMessage={setMessage} formDataRef={formDataRef}/>,
     <GuestView key={2} message={message} formDataRef={formDataRef}/>,
     <CheckoutView key={3} message={message} formDataRef={formDataRef}/>
   ];
@@ -34,6 +36,13 @@ function ReservationPage() {
     if (min != (viewIndex == 0)) setMin(!min);
     if (max != (viewIndex == views.length - 1)) setMax(!max);
   }, [viewIndex]);
+
+  useEffect(() => {
+   fetch("/api/reservations")
+    .then(res => res.json())
+    .then(payload => payload.reservations)
+    .then(reservations => setDates(reservations));
+  }), [];
 
   function validateCurrentView() {
     let validated = true;

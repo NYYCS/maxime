@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react"
 import Reservation from "./Reservation"
 
-const Reservations = () => {
+const Reservations = ({ items }) => {
   const [query, setQuery] = useState("");
-  const [items, setItems] = useState([]);
-
-  useEffect(() => {
-    setItems([<Reservation key="1"/>])
-  }, [query]);
-
+  
+  function listReservations(reservations) {
+    return reservations.map((item, index) => <Reservation key={index} reservation={item}/>)
+  }
 
   return (
     <span className="flex flex-col flex-1 p-10 overflow-y-hidden">
@@ -20,7 +18,7 @@ const Reservations = () => {
         <input type="search" className="flex flex-1 px-2 hover:outline-none focus:outline-none" placeholder="Search" onChange={e => setQuery(e.target.value)}/>
       </div>
       <div className="flex flex-col flex-1 p-4 overflow-y-scroll border rounded">
-        {items}
+        {listReservations(items)}
       </div>
     </span>
   )

@@ -1,24 +1,31 @@
 import { Component } from "react"
+import Link from "next/link"
+
+function MenuButton({ href, label }) {
+  return (
+    <div className="flex flex-col items-center justify-center p-4 group">
+      <Link href={href}>
+        <div className="flex flex-col">
+          <div className="flex flex-row text-5xl font-grotesk">{label}</div>
+          <div className="flex w-0 h-1 transition-all bg-white group-hover:w-full" />
+        </div>
+      </Link>
+    </div>
+  )
+}
 
 class Menu extends Component {
+
+
   render() {
     return (
       <div className={`${this.props.isOpen ? "translate-x-0" : "translate-x-full"} flex z-20 overflow-y-scroll fixed bg-gray-800 text-white min-h-screen min-w-full justify-end flex-row items-center transition-all duration-500`}>
-        <div className="flex flex-col items-end justify-center w-screen h-screen p-10 md:flex-row">
-          <div className="flex flex-col items-center justify-center p-4 group">
-            <div className="flex flex-row text-5xl font-grotesk">Home</div>
-            <div className="flex w-0 h-1 transition-all bg-white group-hover:w-full" />
-          </div>
-          <div className="flex flex-col items-center justify-center p-4 group">
-            <div className="flex flex-row text-5xl font-grotesk">About</div>
-            <div className="flex w-0 h-1 transition-all bg-white group-hover:w-full" />
-          </div>
-          <div className="flex flex-col items-center justify-center p-4 group">
-            <div className="flex flex-row text-5xl font-grotesk">Menu</div>
-            <div className="flex w-0 h-1 transition-all bg-white group-hover:w-full" />
-          </div>
-        </div>
-        <div className="flex flex-col w-screen h-screen">
+        <div className="flex flex-col items-center justify-center w-screen h-screen p-10">
+          <MenuButton href='/' label="Home"/>
+          <MenuButton href='/reservation' label="Reservation"/>
+          <MenuButton href='/invites' label="Invites"/>
+          <MenuButton href='/#about' label="About"/>
+          <MenuButton href='/login' label="Login"/>
         </div>
       </div>
     )

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 import Invite from "./Invite"
 import Layout from "../layout/Layout"
@@ -6,10 +6,11 @@ import ProtectedRoute from "../protected/ProtectedRoute"
 
 
 
+
 function InviteList({ items = [1, 2, 3, 4, 5, 6] }) {
   const invites = items.map((item, index) => {
     return (
-      <Invite key={index} {...item}/>
+      <Invite key={index} invite={item}/>
     )
   })
 
@@ -20,7 +21,33 @@ function InviteList({ items = [1, 2, 3, 4, 5, 6] }) {
   );
 }
 
-function InvitePage({ user, invites }) {
+function InvitePage() {
+  const [invites, setInvites] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("/api/user/invites")
+      .then(res => res.json())
+      .then(data => data.invites)
+      .then(invs => {
+        console.log(invs);
+        setInvites(invs);
+        setLoading(false);
+      });
+  }, []);
+
+  async function createInvite() {
+    await fetch("/api/user/invite")
+      .then(res => res.json())
+      .then(data => data.invite)
+      .then(inv => {
+        console.log(inv);
+        setInvites([inv, ...invites])
+      });
+  }
+
+  if (loading) return <Layout/>
+
   return (
     <ProtectedRoute>
       <Layout>
@@ -35,11 +62,11 @@ function InvitePage({ user, invites }) {
               <p>Unused invite will expired after a week.</p>
             </div>
             <div className="text-sm font-bold md:text-base">
-              <p>Invites remaining: {}</p>
-              <p>Invites used: {}</p>
+              <p>Invites remaining: {15 - invites.length}</p>
+              <p>Invites used: {invites.filter(inv => inv.status != "unused").length}</p>
             </div>
             <div className="flex w-full mt-4">
-              <button className="w-full p-2 font-bold rounded ring-white ring-2 hover:bg-white hover:text-black">
+              <button onClick={createInvite} className="w-full p-2 font-bold rounded ring-white ring-2 hover:bg-white hover:text-black">
                 create invite
               </button>
             </div>

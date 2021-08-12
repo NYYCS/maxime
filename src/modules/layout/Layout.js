@@ -1,6 +1,8 @@
 import Navbar from "./Navbar"
+import {CSSTransition, SwitchTransition } from "react-transition-group"
 
 function Layout({ shouldPad, children }) {
+
   return (
     <>
       <Navbar/>

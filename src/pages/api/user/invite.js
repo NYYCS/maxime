@@ -1,11 +1,17 @@
 import { getSession } from "next-auth/client"
 import getDatabase from "../../../lib/getDatabase"
 import { getInvites } from "../../../lib/user"
+import crypto from "crypto"
+
+function generateInviteHash() {
+  return crypto.randomBytes(20).toString("hex").substr(0, 6);
+}
 
 async function createInvite(uuid) {
   const conn = getDatabase();
-  const res = await conn.query("INSERT INTO invites (hash, created_by) VALUES ($1, $2) RETURNING hash", ["1aZP38", uuid]);
-  return res.rows[0].hash;
+  return await conn.query("INSERT INTO invites (hash, created_by) VALUES ($1, $2) RETURNING hash", [generateInviteHash(), uuid])
+    .then(res => conn.query("SELECT * FROM invites WHERE hash = $1", [res.rows[0].hash]))
+    .then(res => res.rows[0]);
 }
 
 export default async function(req, res) {
