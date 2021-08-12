@@ -45,7 +45,6 @@ async function validateReservation(reservation) {
 
 export default async function(req, res) {
   const reservation = JSON.parse(req.body);
-  console.log(reservation);
   const session = await getSession({ req });
   
   if (session && await validateReservation(reservation)) {
