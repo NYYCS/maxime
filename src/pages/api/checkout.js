@@ -4,7 +4,7 @@ import getDatabase from "../../lib/getDatabase"
 import Stripe from "stripe"
 
 
-const stripe = new Stripe('sk_test_51JKweCCK8vBuAGFhY2KkKHTvkc43l1arB2UiA46vLrwmvDOehl4c4ibXhgYnjvI7BMsqLGyl8LoAkjxKDqqMXR8q001GYb69YR');
+const stripe = new Stripe(process.env.STRIPE_SKEY);
 
 async function createCheckout(reservation, uuid) {
   const session = await stripe.checkout.sessions.create({
@@ -46,7 +46,6 @@ async function validateReservation(reservation) {
 export default async function(req, res) {
   const reservation = JSON.parse(req.body);
   const session = await getSession({ req });
-  
   if (session && await validateReservation(reservation)) {
     try {
       const checkoutSession = await createCheckout(reservation, session.user.uuid);

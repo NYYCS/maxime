@@ -42,7 +42,7 @@ function ReservationPage() {
     .then(res => res.json())
     .then(payload => payload.reservations)
     .then(reservations => setDates(reservations));
-  }), [];
+  }, []);
 
   function validateCurrentView() {
     let validated = true;
@@ -65,7 +65,6 @@ function ReservationPage() {
   }
 
   function nextView() {
-    console.log(validateCurrentView());
     if (!max && validateCurrentView()) {
       setViewIndex(viewIndex + 1);
     }
