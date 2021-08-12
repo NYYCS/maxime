@@ -21,7 +21,7 @@ const stripe = new Stripe("sk_test_51JKweCCK8vBuAGFhY2KkKHTvkc43l1arB2UiA46vLrwm
 
 async function createReservation(reservation, ) {
   const conn = getDatabase();
-  conn.query("INSERT INTO reservations (date, time, guests created_by) VALUES ($1, $2, $3, $4)",
+  conn.query("INSERT INTO reservations (date, time, guests, created_by) VALUES ($1, $2, $3, $4)",
     [reservation.date, reservation.time, reservation.guests, reservation.uuid])
 }
 
