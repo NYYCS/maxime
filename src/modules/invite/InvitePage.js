@@ -22,7 +22,6 @@ function InviteList({ items = [1, 2, 3, 4, 5, 6] }) {
 }
 
 function InvitePage() {
-  const [session, loading] = useSession();
   const [invites, setInvites] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -31,7 +30,6 @@ function InvitePage() {
       .then(res => res.json())
       .then(data => data.invites)
       .then(invs => {
-        console.log(invs);
         setInvites(invs);
         setLoading(false);
       });
@@ -42,7 +40,6 @@ function InvitePage() {
       .then(res => res.json())
       .then(data => data.invite)
       .then(inv => {
-        console.log(inv);
         setInvites([inv, ...invites])
       });
   }
