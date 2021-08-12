@@ -27,7 +27,7 @@ async function createCheckout(reservation, uuid) {
       ],
       metadata: {
         uuid: uuid,
-        date: reservation.data,
+        date: reservation.date,
         time: reservation.time,
         guest: reservation.guest.toString(),
       },
