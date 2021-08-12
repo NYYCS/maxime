@@ -1,15 +1,14 @@
-import Stripe from "stripe"
-
-import Cors from "micro-cors"
-
-import getRawBody from "raw-body"
-import getDatabase from "../../lib/getDatabase"
+//import Stripe from "stripe"
+//
+//
+//import getRawBody from "raw-body"
+//import getDatabase from "../../lib/getDatabase"
 
 const WEBHOOK_SECRET = "whsec_CUKs3M3KAKhyZVu8hYX5m4xP2Tj2aA12"
 
-const cors = Cors({
-  allowMethods: ["POST", "HEAD"],
-});
+//const cors = Cors({
+//  allowMethods: ["POST", "HEAD"],
+//});
 
 export const config = {
   api: {
@@ -17,13 +16,13 @@ export const config = {
   },
 };
 
-const stripe = new Stripe("sk_test_51JKweCCK8vBuAGFhY2KkKHTvkc43l1arB2UiA46vLrwmvDOehl4c4ibXhgYnjvI7BMsqLGyl8LoAkjxKDqqMXR8q001GYb69YR");
+//const stripe = new Stripe("sk_test_51JKweCCK8vBuAGFhY2KkKHTvkc43l1arB2UiA46vLrwmvDOehl4c4ibXhgYnjvI7BMsqLGyl8LoAkjxKDqqMXR8q001GYb69YR");
 
-async function createReservation(reservation, userUuid) {
-  const conn = getDatabase();
-  conn.query("INSERT INTO reservations (date, time, guests created_by) VALUES ($1, $2, $3, $4)",
-    [reservation.date, reservation.time, reservation.guests, userUuid])
-}
+//async function createReservation(reservation, userUuid) {
+//  const conn = getDatabase();
+//  conn.query("INSERT INTO reservations (date, time, guests created_by) VALUES ($1, $2, $3, $4)",
+//    [reservation.date, reservation.time, reservation.guests, userUuid])
+//}
 
 export default async function(req, res) {
   res.status(200);
