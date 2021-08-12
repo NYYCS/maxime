@@ -29,14 +29,4 @@ export default cors(async function(req, res) {
   const sig = req.headers["stripe-signature"];
   const buf = await getRawBody(req);
 
-  try {
-    const event = stripe.webhooks.constructEvent(buf, sig, WEBHOOK_SECRET);
-    if (event.type == "checkout.session.completed") {
-      const checkout = await stripe.checkout.sessions.retrieve(event.data.object.id);
-      const reservation = checkout.metadata;
-      await createReservation(reservation, userUuid);
-    }
-  } catch(error) {
-
-  }
 });
