@@ -1,12 +1,12 @@
 
 import getStripe from "../../lib/getStripe";
 
-
 function CheckoutView({ formDataRef }) {
 
   const dateString = formDataRef.current.date ? formDataRef.current.date.toLocaleDateString("en-gb", {day: "numeric", month: "long", year: "numeric"}): "";
 
-  async function checkout() {
+   async function checkout() {
+    console.log("hello world")
     const stripe = await getStripe();
     fetch("/api/checkout", {
       method: "POST",

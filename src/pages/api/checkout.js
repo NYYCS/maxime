@@ -17,7 +17,7 @@ async function createCheckout(reservation, uuid) {
             product_data: {
               name: "Reservation Fee",
               description: `Table for ${reservation.guest} guests on
-              ${new Date(reservation.date).toLocaleDateString("en-gb", {date: "numeric", month: "long", year: "numeric"})}, 
+              ${new Date(reservation.date).toLocaleDateString("en-gb", {day: "numeric", month: "long", year: "numeric"})}, 
               ${reservation.time}`,
             },
             unit_amount: 500,
@@ -39,17 +39,19 @@ async function createCheckout(reservation, uuid) {
 
 async function validateReservation(reservation) {
   const conn = getDatabase();
-  const reservations = conn.query("SELECT * FROM reservations WHERE date = $1", [reservation.date]);
-  return reservations.length == 0;
+  const reservations = await conn.query("SELECT * FROM reservations WHERE date = $1", [reservation.date]);
+  return reservations.rows.length == 0;
 }
 
 export default async function(req, res) {
   const reservation = JSON.parse(req.body);
+  console.log(reservation);
   const session = await getSession({ req });
   
   if (session && await validateReservation(reservation)) {
     try {
       const checkoutSession = await createCheckout(reservation, session.user.uuid);
+      console.log(checkoutSession.id);
       res.status(200).json({data: checkoutSession.id})
     } catch (error) {
       console.warn(error);
