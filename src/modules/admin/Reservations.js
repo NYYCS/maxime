@@ -17,7 +17,7 @@ const Reservations = ({ items }) => {
         </span>
         <input type="search" className="flex flex-1 px-2 hover:outline-none focus:outline-none" placeholder="Search" onChange={e => setQuery(e.target.value)}/>
       </div>
-      <div className="flex flex-col flex-1 p-4 overflow-y-scroll border rounded">
+      <div className="flex flex-col flex-1 gap-4 p-4 overflow-y-scroll border rounded">
         {listReservations(items)}
       </div>
     </span>

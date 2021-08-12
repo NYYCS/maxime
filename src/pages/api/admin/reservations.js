@@ -7,7 +7,7 @@ export default async function(req, res) {
     res.status(404);
   } else {
     const conn = getDatabase();
-    conn.query("SELECT created_by, date, time, guests, first_name, last_name FROM reservations INNER JOIN users ON created_by = uuid")
+    conn.query("SELECT date, time, guests, first_name, last_name FROM reservations INNER JOIN users ON created_by = uuid")
       .then(results => res.status(200).json({ reservations: results.rows }));
   }
 }
