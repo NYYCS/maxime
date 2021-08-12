@@ -60,8 +60,8 @@ function InvitePage() {
               <p>Unused invite will expired after a week.</p>
             </div>
             <div className="text-sm font-bold md:text-base">
-              <p>Invites remaining: {15 - invites.length || 0}</p>
-              <p>Invites used: {invites?.filter(inv => inv.status != "unused").length || 0}</p>
+              <p>Invites remaining: {15 - invites?.length || 0}</p>
+              <p>Invites used: {invites?.filter(inv => inv.status != "unused")?.length || 0}</p>
             </div>
             <div className="flex w-full mt-4">
               <button onClick={createInvite} className="w-full p-2 font-bold rounded ring-white ring-2 hover:bg-white hover:text-black">
